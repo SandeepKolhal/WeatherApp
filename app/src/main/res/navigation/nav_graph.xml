@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/currentWeatherFragment">
+    <fragment
+        android:id="@+id/currentWeatherFragment"
+        android:name="com.android.weatherapp.ui.fragments.CurrentWeatherFragment"
+        android:label="fragment_current_weather"
+        tools:layout="@layout/fragment_current_weather">
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_locationSearchFragment"
+            app:destination="@id/locationSearchFragment" />
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_currentWeatherFragment_to_forecastWeatherDetailFragment"
+            app:destination="@id/forecastWeatherDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationSearchFragment"
+        android:name="com.android.weatherapp.ui.fragments.LocationSearchFragment"
+        android:label="fragment_location_search"
+        tools:layout="@layout/fragment_location_search" />
+    <fragment
+        android:id="@+id/forecastWeatherDetailFragment"
+        android:name="com.android.weatherapp.ui.fragments.ForecastWeatherDetailFragment"
+        android:label="fragment_forecast_weather_detail"
+        tools:layout="@layout/fragment_forecast_weather_detail" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.android.weatherapp.ui.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>

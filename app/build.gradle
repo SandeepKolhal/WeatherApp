@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.android.weatherapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.android.weatherapp"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://api.weatherapi.com/v1/"'
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://api.weatherapi.com/v1/"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    def navigation_version = "2.5.3"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigation_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigation_version")
+
+    def activity_ktx_version = "1.6.1"
+    implementation("androidx.activity:activity-ktx:$activity_ktx_version")
+
+    def fragment_ktx_version = "1.5.5"
+    implementation("androidx.fragment:fragment-ktx:$fragment_ktx_version")
+
+    def lifecycle_version = "2.5.1"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    def retrofit_version = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+
+    def logging_version = "5.0.0-alpha.10"
+    implementation("com.squareup.okhttp3:logging-interceptor:$logging_version")
+
+    def coroutine_version = "1.6.4"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+
+    def gson_version = "2.10"
+    implementation("com.google.code.gson:gson:$gson_version")
+
+    def swipe_version = "1.1.0"
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:$swipe_version")
+}

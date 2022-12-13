@@ -1,0 +1,53 @@
+{
+  "location": {
+    "name": "London",
+    "region": "City of London, Greater London",
+    "country": "United Kingdom",
+    "lat": 51.52,
+    "lon": -0.11,
+    "tz_id": "Europe/London",
+    "localtime_epoch": 1670917539,
+    "localtime": "2022-12-13 7:45"
+  },
+  "current": {
+    "last_updated_epoch": 1670916600,
+    "last_updated": "2022-12-13 07:30",
+    "temp_c": -2.0,
+    "temp_f": 28.4,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 3.8,
+    "wind_kph": 6.1,
+    "wind_degree": 50,
+    "wind_dir": "NE",
+    "pressure_mb": 1009.0,
+    "pressure_in": 29.8,
+    "precip_mm": 0.0,
+    "precip_in": 0.0,
+    "humidity": 93,
+    "cloud": 0,
+    "feelslike_c": -4.9,
+    "feelslike_f": 23.1,
+    "vis_km": 10.0,
+    "vis_miles": 6.0,
+    "uv": 1.0,
+    "gust_mph": 8.1,
+    "gust_kph": 13.0,
+    "air_quality": {
+      "co": 353.79998779296875,
+      "no2": 35.599998474121094,
+      "o3": 0.10000000149011612,
+      "so2": 22.200000762939453,
+      "pm2_5": 20.299999237060547,
+      "pm10": 21.100000381469727,
+      "us-epa-index": 2,
+      "gb-defra-index": 2
+    }
+  }
+}
+
+//bf6de53ebea24e7a8a171758221312  API Key
