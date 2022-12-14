@@ -23,6 +23,7 @@ import com.android.weatherapp.utils.Constants.KMH
 import com.android.weatherapp.utils.Constants.MPH
 import com.android.weatherapp.utils.setConditionImage
 import com.android.weatherapp.viewmodels.MainViewModel
+import java.net.UnknownHostException
 
 
 class CurrentWeatherFragment : Fragment() {
@@ -97,10 +98,11 @@ class CurrentWeatherFragment : Fragment() {
             }
 
             forecastApiError.observe(viewLifecycleOwner) { errorData ->
+                binding.progressBar.visibility = View.GONE
                 var errorMessage = ""
                 errorData.throwable?.let {
                     errorMessage = when (it) {
-                        is NetworkErrorException -> {
+                        is NetworkErrorException, is UnknownHostException -> {
                             getString(R.string.network_error)
                         }
                         else -> {
