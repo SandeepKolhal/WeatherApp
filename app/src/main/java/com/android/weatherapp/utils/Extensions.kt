@@ -1,6 +1,7 @@
 package com.android.weatherapp.utils
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.widget.ImageView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -25,10 +26,9 @@ fun ImageView.setConditionImage(imageUrl: String) {
     }
 }
 
-fun String.getTime(): String {
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-    val dt = LocalDate.parse(this, formatter)
-    return dt.toString()
+fun Int.getTime(): String {
+    val timestamp = this.toLong() * 1000
+    return DateFormat.format("hh:mm a", timestamp).toString()
 }
 
 fun String.toDay(): String {

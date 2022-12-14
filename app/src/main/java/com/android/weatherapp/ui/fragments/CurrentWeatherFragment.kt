@@ -64,6 +64,8 @@ class CurrentWeatherFragment : Fragment() {
             menu.setOnClickListener {
                 showPopup(it)
             }
+
+            swipeToRefresh.setOnRefreshListener { viewModel.fetchForecastData(getRequestData()) }
         }
 
         forecastListAdapter.setOnClickListener(object : ForecastListAdapter.OnClickListener {
@@ -75,68 +77,72 @@ class CurrentWeatherFragment : Fragment() {
     }
 
     private fun initViewModelObservers() {
-        viewModel.weatherForecastDetails.observe(viewLifecycleOwner) {
-            it?.let { forecastResponsne ->
-                updateUI(forecastResponsne)
-            } ?: run {
-                updateErrorUI(getString(R.string.network_error))
-            }
-
-        }
-
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) {
-                binding.progressBar.visibility = View.VISIBLE
-            } else {
-                binding.progressBar.visibility = View.GONE
-            }
-        }
-
-        viewModel.forecastApiError.observe(viewLifecycleOwner) { errorData ->
-            var errorMessage = ""
-            errorData.throwable?.let {
-                errorMessage = when (it) {
-                    is NetworkErrorException -> {
-                        getString(R.string.network_error)
-                    }
-                    else -> {
-                        it.localizedMessage ?: getString(R.string.network_error)
-                    }
-                }
-            } ?: run {
-                errorData.error?.let {
-                    errorMessage = "${it.error.message} ${it.error.code}"
+        viewModel.apply {
+            weatherForecastDetails.observe(viewLifecycleOwner) {
+                it?.let { forecastResponsne ->
+                    updateUI(forecastResponsne)
                 } ?: run {
-                    errorMessage = errorData.apiErrorMessage ?: getString(R.string.network_error)
+                    updateErrorUI(getString(R.string.network_error))
+                }
+
+            }
+
+            isLoading.observe(viewLifecycleOwner) { isLoading ->
+                if (isLoading) {
+                    binding.progressBar.visibility = View.VISIBLE
+                } else {
+                    binding.progressBar.visibility = View.GONE
+                    binding.swipeToRefresh.isRefreshing = false
                 }
             }
 
-            updateErrorUI(errorMessage)
-        }
+            forecastApiError.observe(viewLifecycleOwner) { errorData ->
+                var errorMessage = ""
+                errorData.throwable?.let {
+                    errorMessage = when (it) {
+                        is NetworkErrorException -> {
+                            getString(R.string.network_error)
+                        }
+                        else -> {
+                            it.localizedMessage ?: getString(R.string.network_error)
+                        }
+                    }
+                } ?: run {
+                    errorData.error?.let {
+                        errorMessage = "${it.error.message} ${it.error.code}"
+                    } ?: run {
+                        errorMessage =
+                            errorData.apiErrorMessage ?: getString(R.string.network_error)
+                    }
+                }
 
-        viewModel.tempUnit.observe(viewLifecycleOwner) {
-            it?.let { unit ->
-                val forecastDetails = viewModel.weatherForecastDetails.value
-                forecastDetails?.let {
-                    updateTemperatureDetails(forecastDetails, unit)
+                updateErrorUI(errorMessage)
+            }
+
+            tempUnit.observe(viewLifecycleOwner) {
+                it?.let { unit ->
+                    val forecastDetails = viewModel.weatherForecastDetails.value
+                    forecastDetails?.let {
+                        updateTemperatureDetails(forecastDetails, unit)
+                    }
                 }
             }
-        }
 
-        viewModel.windUnit.observe(viewLifecycleOwner) {
-            it?.let { unit ->
-                val forecastDetails = viewModel.weatherForecastDetails.value
-                forecastDetails?.let {
-                    updateWindDetails(forecastDetails, unit)
+            windUnit.observe(viewLifecycleOwner) {
+                it?.let { unit ->
+                    val forecastDetails = viewModel.weatherForecastDetails.value
+                    forecastDetails?.let {
+                        updateWindDetails(forecastDetails, unit)
+                    }
                 }
             }
-        }
 
-        viewModel.lastLocationSearched.observe(viewLifecycleOwner) {
-            viewModel.fetchForecastData(getRequestData(it))
-        }
+            lastLocationSearched.observe(viewLifecycleOwner) {
+                fetchForecastData(getRequestData(it))
+            }
 
-        viewModel.fetchAllUserPreferenceData()
+            fetchAllUserPreferenceData()
+        }
     }
 
     @SuppressLint("SetTextI18n")

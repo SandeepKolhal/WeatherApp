@@ -32,7 +32,7 @@ class HourlyListAdapter : RecyclerView.Adapter<HourlyListAdapter.HourlyListViewH
         @SuppressLint("SetTextI18n")
         fun bind(item: Hour) {
             binding.apply {
-                timeText.text = item.time.getTime()
+                timeText.text = item.timeEpoch.getTime()
 
                 var tempText = ""
                 when (tempUnit) {

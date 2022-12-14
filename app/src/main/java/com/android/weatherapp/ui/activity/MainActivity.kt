@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.android.weatherapp.R
 import com.android.weatherapp.databinding.ActivityMainBinding
 import com.android.weatherapp.datasources.RemoteApiDataSourceImpl
