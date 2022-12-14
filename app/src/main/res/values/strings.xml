@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="celcius_unit">℃</string>
+    <string name="fahrenheit_unit">℉</string>
     <string name="degree_symbol">°</string>
     <string name="percent_symbol">%</string>
     <string name="sunrise">Sunrise</string>
@@ -8,4 +9,15 @@
     <string name="humidity">Humidity</string>
     <string name="wind">Wind</string>
     <string name="pressure">Pressure</string>
+    <string name="search_text">Get Weather For Location</string>
+    <string name="pick_location">Pick Location</string>
+    <string name="units">Units</string>
+    <string name="temperature_units">Temperature units</string>
+    <string name="celsius">Celsius ℃</string>
+    <string name="fahrenheit_u2109">Fahrenheit ℉</string>
+    <string name="wind_speed_units">Wind speed units</string>
+    <string name="kilometers_per_hour_km_h">Kilometers per hour (km/h)</string>
+    <string name="km_h">km/h</string>
+    <string name="miles_per_hour_mph">Miles per hour (mph)</string>
+    <string name="mph">mph</string>
 </resources>

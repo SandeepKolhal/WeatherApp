@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.android.weatherapp.R
+import com.android.weatherapp.databinding.FragmentForecastWeatherDetailBinding
 
 class ForecastWeatherDetailFragment : Fragment() {
 
+    private lateinit var binding: FragmentForecastWeatherDetailBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forecast_weather_detail, container, false)
+        binding = FragmentForecastWeatherDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
