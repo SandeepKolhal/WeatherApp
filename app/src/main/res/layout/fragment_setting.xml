@@ -10,7 +10,7 @@
         android:id="@+id/back"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/left_guidline"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back"

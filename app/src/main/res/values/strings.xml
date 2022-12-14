@@ -9,7 +9,7 @@
     <string name="humidity">Humidity</string>
     <string name="wind">Wind</string>
     <string name="pressure">Pressure</string>
-    <string name="search_text">Get Weather For Location</string>
+    <string name="search_text">Enter Location / City Name / Zip Code</string>
     <string name="pick_location">Pick Location</string>
     <string name="units">Units</string>
     <string name="temperature_units">Temperature units</string>
@@ -24,4 +24,7 @@
     <string name="network_error">Oops!! Network Issue please check your internet connection</string>
     <string name="retry">Retry</string>
     <string name="feels_like">Feels Like</string>
+    <string name="average">Average</string>
+    <string name="setting">Setting</string>
+    <string name="location">Location</string>
 </resources>

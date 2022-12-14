@@ -1,6 +1,10 @@
 package com.android.weatherapp.utils
 
+import android.content.Context
 import android.widget.ImageView
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import coil.load
 import com.android.weatherapp.models.errors.ResponseError
 import java.time.LocalDate
@@ -32,3 +36,5 @@ fun String.toDay(): String {
     val dt = LocalDate.parse(this, formatter)
     return dt.dayOfWeek.toString()
 }
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = Constants.PREFERENCES_NAME)

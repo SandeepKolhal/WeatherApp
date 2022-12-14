@@ -83,5 +83,8 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:$swipe_version")
 
     def coil_version = "2.2.2"
-    implementation "io.coil-kt:coil:$coil_version"
+    implementation("io.coil-kt:coil:$coil_version")
+
+    def dataStore_version = "1.0.0"
+    implementation("androidx.datastore:datastore-preferences:$dataStore_version")
 }

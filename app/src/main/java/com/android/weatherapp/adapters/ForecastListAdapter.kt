@@ -1,21 +1,27 @@
 package com.android.weatherapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.weatherapp.R
 import com.android.weatherapp.databinding.ForecastListItemBinding
 import com.android.weatherapp.models.forecast.Forecastday
+import com.android.weatherapp.utils.Constants.CELSIUS
+import com.android.weatherapp.utils.Constants.FAHRENHEIT
 import com.android.weatherapp.utils.setConditionImage
 import com.android.weatherapp.utils.toDay
 
-class ForecastListAdapter() : RecyclerView.Adapter<ForecastListAdapter.ForecastListViewHolder>() {
+class ForecastListAdapter : RecyclerView.Adapter<ForecastListAdapter.ForecastListViewHolder>() {
 
-    private val forecastListData = mutableListOf<Forecastday>()
+    private var forecastListData: List<Forecastday>? = null
+    private var onClickListener: OnClickListener? = null
 
-    fun setList(list: List<Forecastday>) {
-        forecastListData.removeAll(list)
-        forecastListData.addAll(list)
+    private var tempUnit: String = ""
+
+    fun setList(list: List<Forecastday>, tempUnit: String) {
+        this.tempUnit = tempUnit
+        forecastListData = list
         notifyItemRangeChanged(0, list.size)
     }
 
@@ -24,6 +30,7 @@ class ForecastListAdapter() : RecyclerView.Adapter<ForecastListAdapter.ForecastL
 
         private val context = binding.root.context
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: Forecastday) {
             binding.apply {
                 day.text = item.date.toDay()
@@ -32,19 +39,39 @@ class ForecastListAdapter() : RecyclerView.Adapter<ForecastListAdapter.ForecastL
                     "${item.day.avgHumidity} ${context.getString(R.string.percent_symbol)}"
 
                 conditionIcon.setConditionImage(item.day.condition.icon)
-                daysMinMaxTemp.text =
-                    "${item.day.maxTempC}${context.getString(R.string.degree_symbol)} / ${item.day.minTempC}${
-                        context.getString(
-                            R.string.degree_symbol
-                        )
-                    }"
+
+                var tempText = ""
+
+                when (tempUnit) {
+                    CELSIUS -> {
+                        tempText =
+                            "${item.day.maxTempC}${context.getString(R.string.degree_symbol)} / ${item.day.minTempC}${
+                                context.getString(
+                                    R.string.degree_symbol
+                                )
+                            }"
+                    }
+                    FAHRENHEIT -> {
+                        tempText =
+                            "${item.day.maxTempF}${context.getString(R.string.degree_symbol)} / ${item.day.minTempF}${
+                                context.getString(
+                                    R.string.degree_symbol
+                                )
+                            }"
+                    }
+                }
+
+                daysMinMaxTemp.text = tempText
+
+                root.setOnClickListener {
+                    onClickListener?.onItemClick(item)
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
+        parent: ViewGroup, viewType: Int
     ): ForecastListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ForecastListViewHolder(
@@ -55,14 +82,21 @@ class ForecastListAdapter() : RecyclerView.Adapter<ForecastListAdapter.ForecastL
     }
 
     override fun onBindViewHolder(
-        holder: ForecastListAdapter.ForecastListViewHolder,
-        position: Int
+        holder: ForecastListAdapter.ForecastListViewHolder, position: Int
     ) {
-        holder.bind(forecastListData[position])
+        holder.bind(forecastListData!![position])
     }
 
     override fun getItemCount(): Int {
-        return forecastListData.size
+        return forecastListData?.size ?: 0
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+    interface OnClickListener {
+        fun onItemClick(forecastDay: Forecastday)
     }
 
 }

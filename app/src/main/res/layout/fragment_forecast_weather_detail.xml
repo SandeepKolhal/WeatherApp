@@ -19,15 +19,28 @@
             app:layout_constraintGuide_end="20dp" />
 
         <TextView
+            android:id="@+id/avg_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/average"
+            android:textColor="@color/light_grey_DADADA"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/temp_value"
+            app:layout_constraintStart_toStartOf="@+id/temp_value"
+            app:layout_constraintTop_toBottomOf="@+id/date_info" />
+
+        <TextView
             android:id="@+id/temp_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="2dp"
             android:textColor="@color/black"
             android:textSize="65sp"
             app:layout_constraintStart_toStartOf="@+id/left_guidline"
-            app:layout_constraintTop_toBottomOf="@+id/date_info"
+            app:layout_constraintTop_toBottomOf="@+id/avg_info"
             tools:text="28" />
 
         <TextView
@@ -75,7 +88,7 @@
             android:id="@+id/date_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -101,7 +114,6 @@
             android:id="@+id/forecast_weather_condition"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -288,14 +300,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="122dp" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/center_guideline2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.66" />
+                    app:layout_constraintGuide_percent="0.5" />
 
 
                 <TextView
@@ -307,7 +312,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/center_guideline2"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/center_guideline1"
                     app:layout_constraintTop_toBottomOf="@+id/wind_image" />
 
@@ -319,54 +324,18 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/center_guideline2"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/center_guideline1"
                     app:layout_constraintTop_toBottomOf="@+id/wind"
                     tools:text="10 km/h" />
 
-                <ImageView
-                    android:id="@+id/pressure_image"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/pressure"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/center_guideline2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="ContentDescription" />
-
-
-                <TextView
-                    android:id="@+id/pressure"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/pressure"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/center_guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/wind_image" />
-
-                <TextView
-                    android:id="@+id/pressure_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/light_grey_DADADA"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/center_guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/wind"
-                    tools:text="1010 mb" />
 
                 <ImageView
                     android:id="@+id/wind_image"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/wind"
-                    app:layout_constraintEnd_toStartOf="@+id/center_guideline2"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/center_guideline1"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ContentDescription" />
@@ -380,14 +349,6 @@
                     app:layout_constraintStart_toStartOf="@+id/center_guideline1"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="0dp"
-                    android:layout_marginVertical="25dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/center_guideline2"
-                    app:layout_constraintStart_toStartOf="@+id/center_guideline2"
-                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
