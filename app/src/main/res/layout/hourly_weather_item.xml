@@ -15,9 +15,10 @@
         android:textColor="@color/light_grey_DADADA"
         android:textSize="12sp"
         android:textStyle="bold"
-        tools:text="2:30 AM" />
+        tools:text="2:30" />
 
     <TextView
+        android:id="@+id/temp_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"

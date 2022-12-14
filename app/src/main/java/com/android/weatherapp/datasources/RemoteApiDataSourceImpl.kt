@@ -24,7 +24,9 @@ class RemoteApiDataSourceImpl(private val remoteApiService: RemoteApiService) :
                 emit(ResultData.Loading(true))
                 val response = remoteApiService.fetchWeatherForecast(param)
                 emit(processNetworkResponse(response))
+                emit(ResultData.Loading(false))
             } catch (e: Exception) {
+                emit(ResultData.Loading(false))
                 e.printStackTrace()
                 throw e
             }

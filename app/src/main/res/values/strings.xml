@@ -20,4 +20,8 @@
     <string name="km_h">km/h</string>
     <string name="miles_per_hour_mph">Miles per hour (mph)</string>
     <string name="mph">mph</string>
+    <string name="mb">mb</string>
+    <string name="network_error">Oops!! Network Issue please check your internet connection</string>
+    <string name="retry">Retry</string>
+    <string name="feels_like">Feels Like</string>
 </resources>
